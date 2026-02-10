@@ -1,0 +1,9 @@
+{
+	"id": "link-style",
+	"name": "Link Style",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "URLをカード表示、埋め込み表示などに変換する",
+	"author": "noki",
+	"isDesktopOnly": false
+}
