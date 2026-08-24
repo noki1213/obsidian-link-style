@@ -162,7 +162,7 @@ export class CodeBlockProcessor {
 
 	// Get the path of a local image within the vault
 	private getLocalImagePath(link: string): string {
-		link = link.slice(2, -2); // Strip [[]]
+		link = link.slice(2, -2); // Strip the [[ ]] brackets
 		const imageRelativePath = this.app.metadataCache.getFirstLinkpathDest(
 			getLinkpath(link),
 			""
