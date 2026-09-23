@@ -102,7 +102,7 @@ async function convertUrlToMarkdownLink(editor: Editor, url: string): Promise<vo
 			title = metadata?.title;
 		}
 	} catch (e) {
-		console.log("auto-card-embed: failed to fetch title", e);
+		console.log("link-style: failed to fetch title", e);
 	}
 
 	// Find the placeholder text and replace it

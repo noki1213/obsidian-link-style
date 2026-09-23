@@ -1,11 +1,11 @@
-// Main file for the Auto Card Embed plugin
+// Main file for the Link Style plugin
 // Unified plugin that converts URLs into either a card display or an embed display
 
 import { Plugin, MarkdownView, Editor, Menu, MenuItem } from "obsidian";
 
 import {
-	AutoCardEmbedSettings,
-	AutoCardEmbedSettingTab,
+	LinkStyleSettings,
+	LinkStyleSettingTab,
 	DEFAULT_SETTINGS,
 } from "src/settings";
 import { EditorExtensions } from "src/editor-enhancements";
@@ -17,8 +17,8 @@ import { onTwitterResizeMessage } from "src/embed/twitter-embed";
 import { showPasteMenu } from "src/paste-suggest";
 import { linkRegex } from "src/utils/regex";
 
-export default class AutoCardEmbedPlugin extends Plugin {
-	settings?: AutoCardEmbedSettings;
+export default class LinkStylePlugin extends Plugin {
+	settings?: LinkStyleSettings;
 
 	// Reference to the Twitter resize-message listener (used to remove it later)
 	private twitterResizeHandler = (e: MessageEvent) => {
@@ -80,7 +80,7 @@ export default class AutoCardEmbedPlugin extends Plugin {
 		this.registerEvent(this.app.workspace.on("editor-menu", this.onEditorMenu));
 
 		// Register the settings screen
-		this.addSettingTab(new AutoCardEmbedSettingTab(this.app, this));
+		this.addSettingTab(new LinkStyleSettingTab(this.app, this));
 	}
 
 	// Convert the selected URL into a card display
@@ -204,7 +204,7 @@ export default class AutoCardEmbedPlugin extends Plugin {
 	onunload() {
 		// Remove the Twitter resize listener
 		window.removeEventListener("message", this.twitterResizeHandler);
-		console.log("unloading auto-card-embed");
+		console.log("unloading link-style");
 	}
 
 	private async loadSettings() {

@@ -25,7 +25,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/main.ts
 var main_exports = {};
 __export(main_exports, {
-  default: () => AutoCardEmbedPlugin
+  default: () => LinkStylePlugin
 });
 module.exports = __toCommonJS(main_exports);
 var import_obsidian6 = require("obsidian");
@@ -38,7 +38,7 @@ var DEFAULT_SETTINGS = {
   enableYouTubeEmbed: true,
   enableTwitterEmbed: true
 };
-var AutoCardEmbedSettingTab = class extends import_obsidian.PluginSettingTab {
+var LinkStyleSettingTab = class extends import_obsidian.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
@@ -685,7 +685,7 @@ async function convertUrlToMarkdownLink(editor, url) {
       title = metadata == null ? void 0 : metadata.title;
     }
   } catch (e) {
-    console.log("auto-card-embed: failed to fetch title", e);
+    console.log("link-style: failed to fetch title", e);
   }
   const text = editor.getValue();
   const start = text.indexOf(fetchingText);
@@ -714,7 +714,7 @@ function indexToPos(content, index) {
 }
 
 // src/main.ts
-var AutoCardEmbedPlugin = class extends import_obsidian6.Plugin {
+var LinkStylePlugin = class extends import_obsidian6.Plugin {
   constructor() {
     super(...arguments);
     this.twitterResizeHandler = (e) => {
@@ -808,7 +808,7 @@ var AutoCardEmbedPlugin = class extends import_obsidian6.Plugin {
     });
     this.registerEvent(this.app.workspace.on("editor-paste", this.onPaste));
     this.registerEvent(this.app.workspace.on("editor-menu", this.onEditorMenu));
-    this.addSettingTab(new AutoCardEmbedSettingTab(this.app, this));
+    this.addSettingTab(new LinkStyleSettingTab(this.app, this));
   }
   enhanceSelectedURL(editor) {
     const selectedText = (EditorExtensions.getSelectedText(editor) || "").trim();
@@ -853,7 +853,7 @@ var AutoCardEmbedPlugin = class extends import_obsidian6.Plugin {
   }
   onunload() {
     window.removeEventListener("message", this.twitterResizeHandler);
-    console.log("unloading auto-card-embed");
+    console.log("unloading link-style");
   }
   async loadSettings() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());

@@ -2,10 +2,10 @@
 
 import { App, PluginSettingTab, Setting } from "obsidian";
 
-import type AutoCardEmbedPlugin from "src/main";
+import type LinkStylePlugin from "src/main";
 
 // Type definition for the settings
-export interface AutoCardEmbedSettings {
+export interface LinkStyleSettings {
 	// Toggle for showing the popup
 	showPopupOnPaste: boolean;
 	// Toggle for showing the right-click menu
@@ -17,7 +17,7 @@ export interface AutoCardEmbedSettings {
 }
 
 // Default settings
-export const DEFAULT_SETTINGS: AutoCardEmbedSettings = {
+export const DEFAULT_SETTINGS: LinkStyleSettings = {
 	showPopupOnPaste: true,
 	showInMenuItem: true,
 	enableYouTubeEmbed: true,
@@ -25,10 +25,10 @@ export const DEFAULT_SETTINGS: AutoCardEmbedSettings = {
 };
 
 // Tab in the settings screen
-export class AutoCardEmbedSettingTab extends PluginSettingTab {
-	plugin: AutoCardEmbedPlugin;
+export class LinkStyleSettingTab extends PluginSettingTab {
+	plugin: LinkStylePlugin;
 
-	constructor(app: App, plugin: AutoCardEmbedPlugin) {
+	constructor(app: App, plugin: LinkStylePlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
